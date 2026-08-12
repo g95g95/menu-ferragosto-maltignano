@@ -191,6 +191,47 @@
     .dish:nth-child(even) .dish__media{order:0}
   }
 
+  /* ---------- allergeni ---------- */
+  .allergens{
+    display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;
+    list-style:none;margin:1rem 0 0;padding:.85rem 0 0;
+    border-top:1px dashed var(--line);
+  }
+  .allergens__label{
+    font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+    width:100%;margin-bottom:-.1rem;
+  }
+  .allergens li{
+    display:inline-flex;align-items:center;gap:.4rem;
+    font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .allergens svg{width:17px;height:17px;flex:none;color:var(--terra)}
+  .allergens li.is-free{color:var(--ink-soft)}
+  .allergens li.is-free svg{color:#5e7a4e}
+
+  .legend{
+    margin:clamp(2.5rem,7vw,4rem) 0 0;
+    padding:clamp(1.6rem,5vw,2.6rem);
+    border:1px solid var(--line);border-radius:4px;
+    background:rgba(251,246,236,.7);
+    backdrop-filter:blur(6px);
+  }
+  .legend h2{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(1.4rem,4vw,2rem);margin:0 0 .4rem}
+  .legend > p{margin:0 0 1.4rem;color:var(--ink-soft);font-size:.95rem;max-width:62ch}
+  .legend ul{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem 1.6rem;
+    list-style:none;margin:0;padding:0;
+  }
+  .legend li{display:flex;gap:.75rem;align-items:flex-start}
+  .legend svg{width:22px;height:22px;flex:none;color:var(--terra);margin-top:.15rem}
+  .legend li.is-free svg{color:#5e7a4e}
+  .legend b{display:block;font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+  .legend small{display:block;color:var(--ink-soft);font-size:.85rem;line-height:1.45;margin-top:.15rem}
+  .legend__note{
+    margin:1.6rem 0 0;padding-top:1.1rem;border-top:1px dashed var(--line);
+    color:var(--ink-soft);font-size:.85rem;max-width:66ch;
+  }
+
   /* ---------- QR ---------- */
   .qr-section{
     margin:clamp(3.5rem,9vw,6.5rem) 0 0;
@@ -236,6 +277,7 @@
   footer .sign{font-family:var(--display);font-style:italic;font-size:clamp(1.3rem,4vw,1.8rem);margin:0 0 .5rem}
   footer p{margin:.25rem 0;color:var(--ink-soft);font-size:.78rem;letter-spacing:.12em}
   footer .fine{letter-spacing:0;font-size:.72rem;max-width:52ch;margin:1.4rem auto 0;opacity:.8}
+  footer .fine a{color:inherit;text-underline-offset:3px}
 
   /* ---------- reveal ---------- */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -253,12 +295,54 @@
 <div class="backdrop" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
+<!--
+  Simboli allergeni. Tratto da Lucide (https://lucide.dev), licenza ISC —
+  Copyright (c) Lucide Contributors: wheat, fish, droplets, leaf.
+  L'icona "senape" è disegnata a mano nello stesso stile (24px, tratto 2, estremi tondi).
+-->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <g id="ic-glutine" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 22 16 8"/>
+      <path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/>
+      <path d="M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/>
+      <path d="M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/>
+      <path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/>
+      <path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/>
+      <path d="M15.47 13.47 17 15l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/>
+      <path d="M19.47 9.47 21 11l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L13 11l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/>
+    </g>
+    <g id="ic-pesce" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"/>
+      <path d="M18 12v.5"/>
+      <path d="M16 17.93a9.77 9.77 0 0 1 0-11.86"/>
+      <path d="M7 10.67C7 8 5.58 5.97 2.73 5.5c-1 1.5-1 5 .23 6.5-1.24 1.5-1.24 5-.23 6.5C5.58 18.03 7 16 7 13.33"/>
+      <path d="M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 0 1 1.98 1.67l.23 1.4"/>
+      <path d="m16.01 17.93-.23 1.4A2 2 0 0 1 13.8 21H9.5a5.96 5.96 0 0 0 1.49-3.98"/>
+    </g>
+    <g id="ic-senape" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="7" width="12" height="14" rx="3"/>
+      <path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
+      <path d="M9.5 12h5"/>
+    </g>
+    <g id="ic-solfiti" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
+      <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/>
+    </g>
+    <g id="ic-nessuno" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+    </g>
+  </defs>
+</svg>
+
 <header class="topbar" id="topbar">
   <span class="topbar__mark">Sacconi Road</span>
   <nav>
     <a href="#antipasti">Antipasti</a>
     <a href="#secondo">Secondo</a>
     <a href="#contorni">Contorni</a>
+    <a href="#allergeni">Allergeni</a>
     <a href="#qr" class="js-qrlink">QR</a>
   </nav>
 </header>
@@ -293,6 +377,10 @@
           <h3>Affettati misti con fichi caramellati</h3>
           <p class="dish__desc">Prosciutto crudo, coppa, salame e lonzino tagliati al momento, con fichi di stagione caramellati a fuoco lento: dolce e sapido nello stesso boccone.</p>
           <ul class="tags"><li>Da condividere</li><li>Fichi di agosto</li></ul>
+          <ul class="allergens">
+            <li class="allergens__label">Allergeni</li>
+            <li><svg aria-hidden="true"><use href="#ic-solfiti"/></svg>Solfiti</li>
+          </ul>
         </div>
       </article>
 
@@ -307,6 +395,12 @@
           <p class="dish__native">La chichì ripiena del Piceno</p>
           <p class="dish__desc">Pasta di pane stesa e farcita con tonno, peperoni, olive e capperi, poi chiusa a cordone e infornata finché il bordo non diventa dorato.</p>
           <ul class="tags"><li>Tradizione ascolana</li><li>Servita a spicchi</li></ul>
+          <ul class="allergens">
+            <li class="allergens__label">Allergeni</li>
+            <li><svg aria-hidden="true"><use href="#ic-glutine"/></svg>Glutine</li>
+            <li><svg aria-hidden="true"><use href="#ic-pesce"/></svg>Pesce</li>
+            <li><svg aria-hidden="true"><use href="#ic-solfiti"/></svg>Solfiti</li>
+          </ul>
         </div>
       </article>
 
@@ -321,6 +415,10 @@
           <p class="dish__native">Caccia 'nnanz — «cacciata avanti», prima del pane</p>
           <p class="dish__desc">La schiacciata che si infornava per prima per saggiare il calore del forno: olio buono, rosmarino, aglio in camicia e sale grosso in superficie.</p>
           <ul class="tags"><li>Pane di forno</li><li>Rosmarino</li></ul>
+          <ul class="allergens">
+            <li class="allergens__label">Allergeni</li>
+            <li><svg aria-hidden="true"><use href="#ic-glutine"/></svg>Glutine</li>
+          </ul>
         </div>
       </article>
     </section>
@@ -343,6 +441,12 @@
           <p class="dish__native">con salsa verde, rossa e gialla</p>
           <p class="dish__desc">Pancia arrotolata con finocchietto, aglio e pepe, cotta lenta e finita ad alta temperatura perché la cotenna si alzi. Tre salse accanto: verde di prezzemolo, rossa di peperone, gialla allo zafferano e senape.</p>
           <ul class="tags"><li>Cottura lenta</li><li>Tre salse</li><li>Il piatto della festa</li></ul>
+          <ul class="allergens">
+            <li class="allergens__label">Allergeni — nelle salse</li>
+            <li><svg aria-hidden="true"><use href="#ic-pesce"/></svg>Pesce</li>
+            <li><svg aria-hidden="true"><use href="#ic-senape"/></svg>Senape</li>
+            <li><svg aria-hidden="true"><use href="#ic-glutine"/></svg>Glutine</li>
+          </ul>
         </div>
       </article>
     </section>
@@ -365,6 +469,10 @@
           <p class="dish__native">con citronette</p>
           <p class="dish__desc">Foglie giovani e amare insieme — lattughino, radicchio, indivia — condite all'ultimo con limone, olio extravergine e un pizzico di sale.</p>
           <ul class="tags"><li>Vegano</li><li>Limone</li></ul>
+          <ul class="allergens">
+            <li class="allergens__label">Allergeni</li>
+            <li class="is-free"><svg aria-hidden="true"><use href="#ic-nessuno"/></svg>Nessuno dei 14</li>
+          </ul>
         </div>
       </article>
 
@@ -378,8 +486,44 @@
           <h3>Verdure alla brace</h3>
           <p class="dish__desc">Zucchine, melanzane, peperoni, cipolla rossa, finocchi e funghi passati sulla griglia, ancora tiepidi, con olio a crudo, timo e basilico.</p>
           <ul class="tags"><li>Vegano</li><li>Alla griglia</li></ul>
+          <ul class="allergens">
+            <li class="allergens__label">Allergeni</li>
+            <li class="is-free"><svg aria-hidden="true"><use href="#ic-nessuno"/></svg>Nessuno dei 14</li>
+          </ul>
         </div>
       </article>
+    </section>
+
+    <section class="legend reveal" id="allergeni">
+      <h2>Allergeni</h2>
+      <p>I simboli accanto a ogni portata seguono l'Allegato II del Regolamento UE 1169/2011, che elenca
+        le quattordici sostanze da dichiarare. Su questo menù ne compaiono quattro.</p>
+      <ul>
+        <li>
+          <svg aria-hidden="true"><use href="#ic-glutine"/></svg>
+          <span><b>Glutine</b><small>Nella pasta di pane della chichì e della cacciannanz, e nella mollica che lega la salsa verde.</small></span>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#ic-pesce"/></svg>
+          <span><b>Pesce</b><small>Il tonno nel ripieno della chichì; le acciughe nella salsa verde della porchettina.</small></span>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#ic-senape"/></svg>
+          <span><b>Senape</b><small>Nella salsa gialla che accompagna la porchettina.</small></span>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#ic-solfiti"/></svg>
+          <span><b>Solfiti</b><small>Nei salumi e nelle conserve in salamoia (olive, capperi, peperoni sott'olio).</small></span>
+        </li>
+        <li class="is-free">
+          <svg aria-hidden="true"><use href="#ic-nessuno"/></svg>
+          <span><b>Nessuno dei 14</b><small>Misticanza e verdure alla brace: solo verdura, olio, limone ed erbe.</small></span>
+        </li>
+      </ul>
+      <p class="legend__note">Le indicazioni valgono per le ricette come sono descritte qui e vanno confermate
+        in cucina: gli ingredienti acquistati cambiano da un anno all'altro. La cucina è una sola e non ci
+        sono postazioni separate, quindi tracce di altri allergeni sono possibili. Per un'intolleranza seria,
+        parlane prima di metterti a tavola: si trova sempre un'alternativa.</p>
     </section>
 
     <section class="qr-section reveal" id="qr">
@@ -402,7 +546,7 @@
 <footer>
   <p class="sign">Buon Ferragosto</p>
   <p>Sacconi Road · Maltignano (AP)</p>
-  <p class="fine">Alcune preparazioni contengono glutine, pesce, solfiti e frutta a guscio. Segnalate allergie e intolleranze: si trova sempre un'alternativa.</p>
+  <p class="fine">Allergeni indicati portata per portata secondo il Reg. UE 1169/2011 — <a href="#allergeni">vedi la legenda</a>. Simboli da <a href="https://lucide.dev" rel="noopener">Lucide</a> (ISC).</p>
 </footer>
 
 <script>
