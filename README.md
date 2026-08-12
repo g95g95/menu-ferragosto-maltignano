@@ -20,6 +20,19 @@ Sito statico a pagina singola con il menù di Ferragosto e il QR code per aprirl
 5. Misticanza di stagione con citronette
 6. Verdure alla brace
 
+## Allergeni
+
+Ogni portata riporta gli allergeni presenti secondo l'Allegato II del Reg. UE 1169/2011; la legenda
+è nella sezione `#allergeni`. Su questo menù compaiono glutine, pesce, senape e solfiti.
+
+I simboli sono SVG inline (sprite in cima a `index.html`), quindi niente richieste esterne:
+`wheat`, `fish`, `droplets` e `leaf` vengono da [Lucide](https://lucide.dev) — licenza ISC,
+Copyright (c) Lucide Contributors — mentre l'icona della senape è disegnata nello stesso stile
+(24 px, tratto 2, estremi tondi).
+
+Le indicazioni valgono per le ricette come sono descritte nel menù: se cambia un ingrediente,
+va aggiornata anche la lista della portata e, se serve, la legenda.
+
 ## Pubblicazione (GitHub Pages)
 
 Il QR punta a `https://g95g95.github.io/menu-ferragosto-maltignano/`.
