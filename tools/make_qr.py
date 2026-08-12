@@ -43,8 +43,10 @@ def matrix_to_svg(matrix):
 
 def main():
     url = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_URL
+    # border=4 moduli: la "quiet zone" richiesta dallo standard, inclusa nel disegno
+    # così il codice resta leggibile anche se appoggiato su uno sfondo scuro.
     qr = qrcode.QRCode(
-        error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=1, border=0
+        error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=1, border=4
     )
     qr.add_data(url)
     qr.make(fit=True)
@@ -55,7 +57,7 @@ def main():
 
     png_path = os.path.normpath(os.path.join(ASSETS, "qr-menu.png"))
     qrcode.make(
-        url, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=12, border=2
+        url, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=12, border=4
     ).save(png_path)
 
     print(f"QR v{qr.version} -> {url}")
