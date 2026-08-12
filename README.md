@@ -25,11 +25,11 @@ Sito statico a pagina singola con il menù di Ferragosto e il QR code per aprirl
 Il QR punta a `https://g95g95.github.io/menu-ferragosto-maltignano/`.
 
 Il deploy è automatico via GitHub Actions (`.github/workflows/pages.yml`): parte a ogni push su
-`main` e sul branch `claude/ferragosto-menu-qr-jbqyhq`, e pubblica la root del repo.
+`main` e pubblica la root del repo. Lo si può lanciare anche a mano dalla tab Actions
+(«Run workflow»).
 
-Passaggio da fare una volta sola nel repo: **Settings → Pages → Build and deployment →
-Source: GitHub Actions**. Dopo di che il workflow pubblica da solo (lo si può anche lanciare a mano
-dalla tab Actions, «Run workflow»).
+Il deploy gira solo da `main` perché l'environment `github-pages` autorizza il solo branch di
+default: le modifiche vanno quindi unite in `main` per andare online.
 
 Se l'indirizzo cambia (dominio proprio, altro host), rigenera il QR con:
 

@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - claude/ferragosto-menu-qr-jbqyhq
   workflow_dispatch:
 
 permissions:
@@ -26,10 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # enablement: attiva GitHub Pages sul repo al primo giro, senza passare da Settings
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Carica il sito (root del repo)
         uses: actions/upload-pages-artifact@v3
