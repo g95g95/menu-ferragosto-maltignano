@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR · Menù di Ferragosto</title>
+<meta name="description" content="Cartoncino da stampare con il QR code del menù di Ferragosto in Sacconi Road.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🍽️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#20301f;--ink-soft:#4a5647;--cream:#fbf6ec;--line:rgba(32,48,31,.2);--terra:#b5502e;
+    --display:"Cormorant Garamond",Georgia,serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;min-height:100vh;
+    display:grid;place-items:center;gap:1.5rem;
+    padding:2rem 1.25rem 3rem;
+    font-family:var(--sans);font-weight:300;color:var(--ink);
+    background:
+      linear-gradient(180deg,rgba(251,246,236,.9),rgba(243,234,217,.96)),
+      url("assets/sacconi-road.jpg") center 20% / cover no-repeat fixed;
+  }
+  .card{
+    width:min(420px,100%);
+    aspect-ratio:5/7;
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:4px;
+    box-shadow:0 30px 60px -35px rgba(32,48,31,.6);
+    padding:clamp(1.5rem,5vw,2.4rem);
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    text-align:center;
+  }
+  .card__top .eyebrow{
+    font-size:.62rem;letter-spacing:.36em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 .8rem;
+  }
+  .card__top h1{
+    font-family:var(--display);font-weight:300;font-size:clamp(2.1rem,9vw,2.9rem);line-height:1;margin:0;
+  }
+  .card__top h1 em{font-style:italic;color:var(--terra)}
+  .card__top .date{
+    font-family:var(--display);font-size:.92rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft);margin:.7rem 0 0;
+  }
+  .qr{
+    width:min(62%,220px);height:auto;display:block;
+    padding:.6rem;border:1px solid var(--line);border-radius:3px;background:var(--cream);
+  }
+  .card__bottom .cta{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 .4rem}
+  .card__bottom .place{font-family:var(--display);font-style:italic;font-size:1.15rem;margin:0}
+  .card__bottom .url{font-size:.6rem;letter-spacing:.06em;color:var(--ink-soft);margin:.5rem 0 0;word-break:break-all;opacity:.75}
+
+  .actions{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+  .btn{
+    font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    padding:.7rem 1.2rem;border:1px solid var(--ink);border-radius:99px;
+    background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;
+    transition:background .25s,color .25s;
+  }
+  .btn:hover{background:var(--ink);color:var(--cream)}
+  .btn--ghost{border-color:var(--line);color:var(--ink-soft)}
+  .btn--ghost:hover{background:var(--ink-soft);color:var(--cream);border-color:var(--ink-soft)}
+
+  @media print{
+    @page{margin:12mm}
+    body{background:#fff;padding:0;display:block}
+    .actions{display:none}
+    .card{box-shadow:none;margin:0 auto;width:105mm;aspect-ratio:5/7}
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="card__top">
+      <p class="eyebrow">Sacconi Road · Maltignano</p>
+      <h1>Menù di<br><em>Ferragosto</em></h1>
+      <p class="date">15 agosto</p>
+    </div>
+    <img class="qr" src="assets/qr-menu.svg" width="220" height="220" alt="QR code che apre il menù di Ferragosto">
+    <div class="card__bottom">
+      <p class="cta">Inquadra con la fotocamera</p>
+      <p class="place">Sei portate, una tavola sola</p>
+      <p class="url">g95g95.github.io/menu-ferragosto-maltignano</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" onclick="window.print()">Stampa il cartoncino</button>
+    <a class="btn btn--ghost" href="index.html">Torna al menù</a>
+  </div>
+</body>
+</html>
